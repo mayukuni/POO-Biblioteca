@@ -36,12 +36,14 @@ public class Cliente extends Usuario {
         this.livrosDigitaisEmprestados = livrosDigitaisEmprestados;
     }
 
-    public void solicitarDevolucao(Funcionario funcionario, Livro livro) {
-        System.out.println("Solicitando devolução do livro: " + livro.getTitulo());
+    public void solicitarEmprestimo(Funcionario funcionario, Livro livro) {
+        System.out.println("Cliente " + this.getNome() + " está solicitando empréstimo do livro: " + livro.getTitulo());
+        funcionario.registrarEmprestimo(this, livro);
     }
 
-    public void solicitarEmprestimo(Funcionario funcionario, Livro livro) {
-        System.out.println("Solicitando empréstimo do livro: " + livro.getTitulo());
+    public void solicitarDevolucao(Funcionario funcionario, Livro livro) {
+        System.out.println("Cliente " + this.getNome() + " está solicitando devolução do livro: " + livro.getTitulo());
+        funcionario.registrarDevolucao(this, livro);
     }
 }
 

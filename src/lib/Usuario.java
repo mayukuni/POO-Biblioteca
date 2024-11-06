@@ -67,14 +67,20 @@ public class Usuario {
     }
 
     // Métodos
-    public void consultarLivrosEmprestados() {
-        // Lógica para consultar os livros emprestados
-        System.out.println("Consultando livros emprestados...");
-    }
+    public void consultarLivrosDisponiveis(SistemaBiblioteca sistema) {
+        System.out.println("\n=== Livros Físicos Disponíveis ===");
+        for (LivroFisico livro : sistema.getLivrosFisicosCadastrados()) {
+            if (livro.isDisponivel()) {
+                System.out.println("Título: " + livro.getTitulo() + " | ISBN: " + livro.getISBN() + " | Quantidade: " + livro.getQuantidade());
+            }
+        }
 
-    public void consultarLivrosDisponiveis() {
-        // Lógica para consultar os livros disponíveis
-        System.out.println("Consultando livros disponíveis...");
+        System.out.println("\n=== Livros Digitais Disponíveis ===");
+        for (LivroDigital livro : sistema.getLivrosDigitaisCadastrados()) {
+            if (livro.isDisponivel()) {
+                System.out.println("Título: " + livro.getTitulo() + " | ISBN: " + livro.getISBN());
+            }
+        }
     }
 }
 

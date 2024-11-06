@@ -1,5 +1,6 @@
 package lib;
 import java.util.List;
+import java.util.ArrayList;
 
 public class SistemaBiblioteca {
     private List<LivroFisico> livrosFisicosCadastrados;
@@ -60,6 +61,20 @@ public class SistemaBiblioteca {
         this.clientesCadastrados = clientesCadastrados;
     }
 
-    // Métodos específicos podem ser adicionados conforme necessário para a lógica do sistema.
+    public List<Livro> getLivrosCadastrados() {
+        List<Livro> todosLivros = new ArrayList<>();
+        todosLivros.addAll(livrosFisicosCadastrados);
+        todosLivros.addAll(livrosDigitaisCadastrados);
+        return todosLivros;
+    }
+
+    public Livro buscarLivroPorTitulo(String titulo) {
+        for (Livro livro : getLivrosCadastrados()) {
+            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
+                return livro;
+            }
+        }
+        return null;
+    }
 }
 
